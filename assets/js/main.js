@@ -274,10 +274,10 @@
   $$('.service-card.is-flip').forEach(card => {
     let timer = null;
     card.addEventListener('touchstart', () => {
-      if (card.classList.contains('is-touched')) return;
-      card.classList.add('is-touched');
       clearTimeout(timer);
-      timer = setTimeout(() => card.classList.remove('is-touched'), 3800);
+      if (card.classList.toggle('is-touched')) {
+        timer = setTimeout(() => card.classList.remove('is-touched'), 6000);
+      }
     }, { passive: true });
   });
 
