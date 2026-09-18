@@ -271,6 +271,16 @@
     update();
   });
 
+  $$('.service-card.is-flip').forEach(card => {
+    let timer = null;
+    card.addEventListener('touchstart', () => {
+      if (card.classList.contains('is-touched')) return;
+      card.classList.add('is-touched');
+      clearTimeout(timer);
+      timer = setTimeout(() => card.classList.remove('is-touched'), 3800);
+    }, { passive: true });
+  });
+
   const topBtn = $('.float-btn.top');
   if (topBtn) {
     const ringFill = $('.progress-ring-fill', topBtn);
